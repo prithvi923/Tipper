@@ -10,12 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var baseView: UIView!
+    var ppInputView: PPInputView!
     var baseField: UITextField!
     var tipLabel: UILabel!
     var totalLabel: UILabel!
-    var tipControl: UISegmentedControl!
-    var tipValues: [String] = ["15%", "20%", "25%"]
     var keyboardHeight: CGFloat!
     var viewableArea: CGFloat!
     var baseViewConstraint: NSLayoutConstraint!
@@ -31,31 +29,18 @@ class ViewController: UIViewController {
     }
     
     func createBaseView() {
-        baseView = UIView()
-        
-        baseView.backgroundColor = Constants.appGreenColor
+        ppInputView = PPInputView(viewWidth: view.frame.width)
         
         createInputBaseField()
         
-        tipControl = PPSegmentedControl(items: tipValues)
-        baseView.addSubview(tipControl)
-        tipControl.addTarget(self, action: #selector(changeTip), forControlEvents: .ValueChanged)
-        addTipControlConstraints()
+        ppInputView.tipControl.addTarget(self, action: #selector(changeTip), forControlEvents: .ValueChanged)
         
-        view.addSubview(baseView)
+        view.addSubview(ppInputView)
         
-        baseView.translatesAutoresizingMaskIntoConstraints = false
-        baseView.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
-        baseView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
-        baseView.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
-    }
-    
-    func addTipControlConstraints() {
-        tipControl.translatesAutoresizingMaskIntoConstraints = false
-        tipControl.widthAnchor.constraintEqualToConstant(view.frame.width*7/9).active = true
-        tipControl.centerXAnchor.constraintEqualToAnchor(baseView.centerXAnchor, constant: 0).active = true
-        tipControl.bottomAnchor.constraintEqualToAnchor(baseView.bottomAnchor, constant: -10).active = true
-        tipControl.heightAnchor.constraintEqualToConstant(25).active = true
+        ppInputView.translatesAutoresizingMaskIntoConstraints = false
+        ppInputView.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
+        ppInputView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
+        ppInputView.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
     }
     
     func createInputBaseField() {
@@ -72,14 +57,14 @@ class ViewController: UIViewController {
         
         baseField.placeholder = "$"
         
-        baseView.addSubview(baseField)
+        ppInputView.addSubview(baseField)
         
         baseField.translatesAutoresizingMaskIntoConstraints = false
-        baseField.widthAnchor.constraintEqualToConstant(baseView.frame.width).active = true
+        baseField.widthAnchor.constraintEqualToConstant(ppInputView.frame.width).active = true
         baseField.heightAnchor.constraintEqualToConstant(30)
-        baseField.rightAnchor.constraintEqualToAnchor(baseView.rightAnchor, constant: 0).active = true
-        baseField.centerXAnchor.constraintEqualToAnchor(baseView.centerXAnchor).active = true
-        baseField.centerYAnchor.constraintEqualToAnchor(baseView.centerYAnchor).active = true
+        baseField.rightAnchor.constraintEqualToAnchor(ppInputView.rightAnchor, constant: 0).active = true
+        baseField.centerXAnchor.constraintEqualToAnchor(ppInputView.centerXAnchor).active = true
+        baseField.centerYAnchor.constraintEqualToAnchor(ppInputView.centerYAnchor).active = true
         
         baseField.becomeFirstResponder()
     }
@@ -95,7 +80,7 @@ class ViewController: UIViewController {
         view.addSubview(tipLabel)
         
         tipLabel.translatesAutoresizingMaskIntoConstraints = false
-        tipLabel.topAnchor.constraintEqualToAnchor(baseView.bottomAnchor, constant: 0).active = true
+        tipLabel.topAnchor.constraintEqualToAnchor(ppInputView.bottomAnchor, constant: 0).active = true
         tipLabel.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
         tipLabel.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
     }
@@ -131,7 +116,7 @@ class ViewController: UIViewController {
         
         let tipInts = [0.15, 0.20, 0.25]
         
-        let tipPerc = tipInts[tipControl.selectedSegmentIndex]
+        let tipPerc = tipInts[ppInputView.tipControl.selectedSegmentIndex]
         
         let tip = tipPerc*base
         let total = tip+base
@@ -147,7 +132,7 @@ class ViewController: UIViewController {
         
         viewableArea = view.frame.height - keyboardHeight - 20
         
-        baseViewConstraint = baseView.heightAnchor.constraintEqualToConstant(viewableArea)
+        baseViewConstraint = ppInputView.heightAnchor.constraintEqualToConstant(viewableArea)
         baseViewConstraint.active = true
         tipLabel.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
         totalLabel.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
