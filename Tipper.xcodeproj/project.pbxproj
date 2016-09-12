@@ -11,6 +11,7 @@
 		F436A4D01D8645A700BD3FF1 /* PPInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436A4CF1D8645A700BD3FF1 /* PPInputView.swift */; };
 		F436A4D21D86495000BD3FF1 /* PPSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436A4D11D86495000BD3FF1 /* PPSegmentedControl.swift */; };
 		F436A4D41D8655FF00BD3FF1 /* PPInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436A4D31D8655FF00BD3FF1 /* PPInputField.swift */; };
+		F436A4D61D86595200BD3FF1 /* PPLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436A4D51D86595200BD3FF1 /* PPLabel.swift */; };
 		F4E4CD611D85B8D1008C4561 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4CD601D85B8D1008C4561 /* AppDelegate.swift */; };
 		F4E4CD631D85B8D1008C4561 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4CD621D85B8D1008C4561 /* ViewController.swift */; };
 		F4E4CD661D85B8D1008C4561 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4E4CD641D85B8D1008C4561 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		F436A4CF1D8645A700BD3FF1 /* PPInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPInputView.swift; sourceTree = "<group>"; };
 		F436A4D11D86495000BD3FF1 /* PPSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPSegmentedControl.swift; sourceTree = "<group>"; };
 		F436A4D31D8655FF00BD3FF1 /* PPInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPInputField.swift; sourceTree = "<group>"; };
+		F436A4D51D86595200BD3FF1 /* PPLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPLabel.swift; sourceTree = "<group>"; };
 		F4E4CD5D1D85B8D1008C4561 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E4CD601D85B8D1008C4561 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4E4CD621D85B8D1008C4561 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				F4E4CD601D85B8D1008C4561 /* AppDelegate.swift */,
 				F4E4CD621D85B8D1008C4561 /* ViewController.swift */,
+				F436A4D51D86595200BD3FF1 /* PPLabel.swift */,
 				F436A4D31D8655FF00BD3FF1 /* PPInputField.swift */,
 				F436A4D11D86495000BD3FF1 /* PPSegmentedControl.swift */,
 				F436A4CF1D8645A700BD3FF1 /* PPInputView.swift */,
@@ -273,6 +276,7 @@
 				F4E4CD611D85B8D1008C4561 /* AppDelegate.swift in Sources */,
 				F436A4CE1D86159000BD3FF1 /* Constants.swift in Sources */,
 				F436A4D01D8645A700BD3FF1 /* PPInputView.swift in Sources */,
+				F436A4D61D86595200BD3FF1 /* PPLabel.swift in Sources */,
 				F436A4D41D8655FF00BD3FF1 /* PPInputField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

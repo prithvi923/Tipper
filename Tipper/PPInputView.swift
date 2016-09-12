@@ -36,7 +36,6 @@ class PPInputView: UIView {
     }
     
     func addInputFieldConstraints() {
-        
         inputField.translatesAutoresizingMaskIntoConstraints = false
         inputField.widthAnchor.constraintEqualToConstant(frame.width).active = true
         inputField.heightAnchor.constraintEqualToConstant(30)

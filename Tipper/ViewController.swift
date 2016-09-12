@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     var ppInputView: PPInputView!
-    var tipLabel: UILabel!
-    var totalLabel: UILabel!
+    var tipLabel: PPLabel!
+    var totalLabel: PPLabel!
     var keyboardHeight: CGFloat!
     var viewableArea: CGFloat!
     var baseViewConstraint: NSLayoutConstraint!
@@ -22,16 +22,13 @@ class ViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
         
-        createBaseView()
-        createTipLabel()
-        createTotalLabel()
+        setupBaseView()
+        setupTipLabel()
+        setupTotalLabel()
     }
     
-    func createBaseView() {
+    func setupBaseView() {
         ppInputView = PPInputView(viewWidth: view.frame.width)
-        
-        ppInputView.tipControl.addTarget(self, action: #selector(changeTip), forControlEvents: .ValueChanged)
-        ppInputView.inputField.addTarget(self, action: #selector(changeTip), forControlEvents: .EditingChanged)
         
         view.addSubview(ppInputView)
         
@@ -40,16 +37,13 @@ class ViewController: UIViewController {
         ppInputView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
         ppInputView.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
         
+        ppInputView.tipControl.addTarget(self, action: #selector(changeTip), forControlEvents: .ValueChanged)
+        ppInputView.inputField.addTarget(self, action: #selector(changeTip), forControlEvents: .EditingChanged)
         ppInputView.inputField.becomeFirstResponder()
     }
     
-    func createTipLabel() {
-        tipLabel = UILabel()
-        
-        tipLabel.backgroundColor = Constants.appLightGreenColor
-        tipLabel.textAlignment = NSTextAlignment.Right
-        tipLabel.textColor = UIColor.whiteColor()
-        tipLabel.font = UIFont(name: "Futura", size: 30.0)
+    func setupTipLabel() {
+        tipLabel = PPLabel()
         
         view.addSubview(tipLabel)
         
@@ -59,13 +53,8 @@ class ViewController: UIViewController {
         tipLabel.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
     }
     
-    func createTotalLabel() {
-        totalLabel = UILabel()
-        
-        totalLabel.backgroundColor = Constants.appLightGreenColor
-        totalLabel.textAlignment = NSTextAlignment.Right
-        totalLabel.textColor = UIColor.whiteColor()
-        totalLabel.font = UIFont(name: "Futura", size: 30.0)
+    func setupTotalLabel() {
+        totalLabel = PPLabel()
         
         view.addSubview(totalLabel)
         
