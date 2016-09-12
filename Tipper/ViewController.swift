@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var tipControl: UISegmentedControl!
     var tipValues: [String] = ["15%", "20%", "25%"]
     var keyboardHeight: CGFloat!
+    var viewableArea: CGFloat!
     var baseViewConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -25,16 +26,17 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
         
         createBaseView()
-        createInputBaseField()
         createTipLabel()
         createTotalLabel()
-        createTipControl()
     }
     
     func createBaseView() {
         baseView = UIView()
         
         baseView.backgroundColor = Constants.appGreenColor
+        
+        createInputBaseField()
+        createTipControl()
         
         view.addSubview(baseView)
         
@@ -61,11 +63,11 @@ class ViewController: UIViewController {
         baseView.addSubview(baseField)
         
         baseField.translatesAutoresizingMaskIntoConstraints = false
+        baseField.widthAnchor.constraintEqualToConstant(baseView.frame.width).active = true
+        baseField.heightAnchor.constraintEqualToConstant(30)
         baseField.rightAnchor.constraintEqualToAnchor(baseView.rightAnchor, constant: 0).active = true
         baseField.centerXAnchor.constraintEqualToAnchor(baseView.centerXAnchor).active = true
         baseField.centerYAnchor.constraintEqualToAnchor(baseView.centerYAnchor).active = true
-        baseField.widthAnchor.constraintEqualToConstant(baseView.frame.width).active = true
-        baseField.heightAnchor.constraintEqualToConstant(60)
         
         baseField.becomeFirstResponder()
     }
@@ -73,28 +75,32 @@ class ViewController: UIViewController {
     func createTipLabel() {
         tipLabel = UILabel()
         
-        tipLabel.backgroundColor = UIColor.cyanColor()
+        tipLabel.backgroundColor = Constants.appLightGreenColor
+        tipLabel.textAlignment = NSTextAlignment.Right
+        tipLabel.textColor = UIColor.whiteColor()
+        tipLabel.font = UIFont(name: "Futura", size: 30.0)
         
         view.addSubview(tipLabel)
         
         tipLabel.translatesAutoresizingMaskIntoConstraints = false
-        tipLabel.topAnchor.constraintEqualToAnchor(baseView.bottomAnchor, constant: 50).active = true
-        tipLabel.widthAnchor.constraintEqualToConstant(view.frame.width/2).active = true
-        tipLabel.heightAnchor.constraintEqualToConstant(50).active = true
+        tipLabel.topAnchor.constraintEqualToAnchor(baseView.bottomAnchor, constant: 0).active = true
+        tipLabel.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
         tipLabel.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
     }
     
     func createTotalLabel() {
         totalLabel = UILabel()
         
-        totalLabel.backgroundColor = UIColor.magentaColor()
+        totalLabel.backgroundColor = Constants.appLightGreenColor
+        totalLabel.textAlignment = NSTextAlignment.Right
+        totalLabel.textColor = UIColor.whiteColor()
+        totalLabel.font = UIFont(name: "Futura", size: 30.0)
         
         view.addSubview(totalLabel)
         
         totalLabel.translatesAutoresizingMaskIntoConstraints = false
-        totalLabel.topAnchor.constraintEqualToAnchor(tipLabel.bottomAnchor, constant: 50).active = true
-        totalLabel.widthAnchor.constraintEqualToConstant(view.frame.width/2).active = true
-        totalLabel.heightAnchor.constraintEqualToConstant(50).active = true
+        totalLabel.topAnchor.constraintEqualToAnchor(tipLabel.bottomAnchor, constant: 0).active = true
+        totalLabel.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
         totalLabel.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
     }
     
@@ -102,20 +108,21 @@ class ViewController: UIViewController {
         tipControl = UISegmentedControl(items: tipValues)
         
         tipControl.selectedSegmentIndex = 1
+        tipControl.backgroundColor = Constants.appGreenColor
+        tipControl.tintColor = UIColor.whiteColor()
         
         tipControl.addTarget(self, action: #selector(changeTip), forControlEvents: .ValueChanged)
         
-        view.addSubview(tipControl)
+        baseView.addSubview(tipControl)
         
         tipControl.translatesAutoresizingMaskIntoConstraints = false
-        tipControl.topAnchor.constraintEqualToAnchor(totalLabel.bottomAnchor, constant: 50).active = true
         tipControl.widthAnchor.constraintEqualToConstant(view.frame.width*7/9).active = true
-        tipControl.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor, constant: 0).active = true
-//        tipControl.heightAnchor.constraintEqualToConstant(50).active = true
+        tipControl.centerXAnchor.constraintEqualToAnchor(baseView.centerXAnchor, constant: 0).active = true
+        tipControl.bottomAnchor.constraintEqualToAnchor(baseView.bottomAnchor, constant: -10).active = true
+        tipControl.heightAnchor.constraintEqualToConstant(25).active = true
     }
     
     func changeTip() {
-        let viewableArea = view.frame.height - keyboardHeight
         if baseField.text != "" {
             baseViewConstraint.constant = viewableArea/2
         } else {
@@ -135,8 +142,8 @@ class ViewController: UIViewController {
         let tip = tipPerc*base
         let total = tip+base
         
-        tipLabel.text = String.localizedStringWithFormat("$%.2f", tip)
-        totalLabel.text = String.localizedStringWithFormat("$%.2f", total)
+        tipLabel.text = String.localizedStringWithFormat("+ $%.2f", tip)
+        totalLabel.text = String.localizedStringWithFormat("= $%.2f", total)
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -144,9 +151,12 @@ class ViewController: UIViewController {
         
         keyboardHeight = frame.height
         
-        baseViewConstraint = baseView.heightAnchor.constraintEqualToConstant(view.frame.height - keyboardHeight)
-        baseViewConstraint.identifier = "fieldHeight"
+        viewableArea = view.frame.height - keyboardHeight - 20
+        
+        baseViewConstraint = baseView.heightAnchor.constraintEqualToConstant(viewableArea)
         baseViewConstraint.active = true
+        tipLabel.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
+        totalLabel.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
     }
 
     override func didReceiveMemoryWarning() {
