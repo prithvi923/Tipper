@@ -36,7 +36,11 @@ class ViewController: UIViewController {
         baseView.backgroundColor = Constants.appGreenColor
         
         createInputBaseField()
-        createTipControl()
+        
+        tipControl = PPSegmentedControl(items: tipValues)
+        baseView.addSubview(tipControl)
+        tipControl.addTarget(self, action: #selector(changeTip), forControlEvents: .ValueChanged)
+        addTipControlConstraints()
         
         view.addSubview(baseView)
         
@@ -44,6 +48,14 @@ class ViewController: UIViewController {
         baseView.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
         baseView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
         baseView.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
+    }
+    
+    func addTipControlConstraints() {
+        tipControl.translatesAutoresizingMaskIntoConstraints = false
+        tipControl.widthAnchor.constraintEqualToConstant(view.frame.width*7/9).active = true
+        tipControl.centerXAnchor.constraintEqualToAnchor(baseView.centerXAnchor, constant: 0).active = true
+        tipControl.bottomAnchor.constraintEqualToAnchor(baseView.bottomAnchor, constant: -10).active = true
+        tipControl.heightAnchor.constraintEqualToConstant(25).active = true
     }
     
     func createInputBaseField() {
@@ -102,24 +114,6 @@ class ViewController: UIViewController {
         totalLabel.topAnchor.constraintEqualToAnchor(tipLabel.bottomAnchor, constant: 0).active = true
         totalLabel.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
         totalLabel.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
-    }
-    
-    func createTipControl() {
-        tipControl = UISegmentedControl(items: tipValues)
-        
-        tipControl.selectedSegmentIndex = 1
-        tipControl.backgroundColor = Constants.appGreenColor
-        tipControl.tintColor = UIColor.whiteColor()
-        
-        tipControl.addTarget(self, action: #selector(changeTip), forControlEvents: .ValueChanged)
-        
-        baseView.addSubview(tipControl)
-        
-        tipControl.translatesAutoresizingMaskIntoConstraints = false
-        tipControl.widthAnchor.constraintEqualToConstant(view.frame.width*7/9).active = true
-        tipControl.centerXAnchor.constraintEqualToAnchor(baseView.centerXAnchor, constant: 0).active = true
-        tipControl.bottomAnchor.constraintEqualToAnchor(baseView.bottomAnchor, constant: -10).active = true
-        tipControl.heightAnchor.constraintEqualToConstant(25).active = true
     }
     
     func changeTip() {
