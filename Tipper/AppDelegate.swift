@@ -20,17 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let myViewController = ViewController()
         
+        myViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: #selector(pushSettings))
+        
         navController = UINavigationController(rootViewController: myViewController)
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-
+        
         self.window?.backgroundColor = UIColor.whiteColor()
-        
         self.window?.rootViewController = navController
-        
         self.window?.makeKeyAndVisible()
         
         return true
+    }
+    
+    func pushSettings() {
+        navController?.pushViewController(SettingsViewController(), animated: true)
     }
 
     func applicationWillResignActive(application: UIApplication) {

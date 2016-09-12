@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         title = "Tipper"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: #selector(printThis))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,12 +31,13 @@ class ViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
         
+        
         setupBaseView()
         setupTipLabel()
         setupTotalLabel()
     }
     
-    func printThis() {
+    func showSettings() {
         print("here")
     }
     
