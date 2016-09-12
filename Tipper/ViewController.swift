@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController {
 
     var ppInputView: PPInputView!
-    var baseField: UITextField!
     var tipLabel: UILabel!
     var totalLabel: UILabel!
     var keyboardHeight: CGFloat!
@@ -31,9 +30,8 @@ class ViewController: UIViewController {
     func createBaseView() {
         ppInputView = PPInputView(viewWidth: view.frame.width)
         
-        createInputBaseField()
-        
         ppInputView.tipControl.addTarget(self, action: #selector(changeTip), forControlEvents: .ValueChanged)
+        ppInputView.inputField.addTarget(self, action: #selector(changeTip), forControlEvents: .EditingChanged)
         
         view.addSubview(ppInputView)
         
@@ -41,32 +39,8 @@ class ViewController: UIViewController {
         ppInputView.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
         ppInputView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
         ppInputView.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
-    }
-    
-    func createInputBaseField() {
-        baseField = UITextField()
         
-        baseField.backgroundColor = Constants.appGreenColor
-        baseField.textColor = UIColor.whiteColor()
-        baseField.font = UIFont(name: "Futura", size: 30.0)
-        baseField.textAlignment = NSTextAlignment.Right
-        
-        baseField.addTarget(self, action: #selector(changeTip), forControlEvents: .EditingChanged)
-        
-        baseField.keyboardType = UIKeyboardType.DecimalPad
-        
-        baseField.placeholder = "$"
-        
-        ppInputView.addSubview(baseField)
-        
-        baseField.translatesAutoresizingMaskIntoConstraints = false
-        baseField.widthAnchor.constraintEqualToConstant(ppInputView.frame.width).active = true
-        baseField.heightAnchor.constraintEqualToConstant(30)
-        baseField.rightAnchor.constraintEqualToAnchor(ppInputView.rightAnchor, constant: 0).active = true
-        baseField.centerXAnchor.constraintEqualToAnchor(ppInputView.centerXAnchor).active = true
-        baseField.centerYAnchor.constraintEqualToAnchor(ppInputView.centerYAnchor).active = true
-        
-        baseField.becomeFirstResponder()
+        ppInputView.inputField.becomeFirstResponder()
     }
     
     func createTipLabel() {
@@ -102,7 +76,7 @@ class ViewController: UIViewController {
     }
     
     func changeTip() {
-        if baseField.text != "" {
+        if ppInputView.inputField.text != "" {
             baseViewConstraint.constant = viewableArea/2
         } else {
             baseViewConstraint.constant = viewableArea
@@ -112,7 +86,7 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         
-        let base = Double(baseField.text!) ?? 0
+        let base = Double(ppInputView.inputField.text!) ?? 0
         
         let tipInts = [0.15, 0.20, 0.25]
         
