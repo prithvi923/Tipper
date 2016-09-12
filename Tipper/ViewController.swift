@@ -17,6 +17,16 @@ class ViewController: UIViewController {
     var viewableArea: CGFloat!
     var baseViewConstraint: NSLayoutConstraint!
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        title = "Tipper"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: #selector(printThis))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +35,10 @@ class ViewController: UIViewController {
         setupBaseView()
         setupTipLabel()
         setupTotalLabel()
+    }
+    
+    func printThis() {
+        print("here")
     }
     
     func setupBaseView() {
@@ -93,7 +107,7 @@ class ViewController: UIViewController {
         
         keyboardHeight = frame.height
         
-        viewableArea = view.frame.height - keyboardHeight - 20
+        viewableArea = view.frame.height - keyboardHeight
         
         baseViewConstraint = ppInputView.heightAnchor.constraintEqualToConstant(viewableArea)
         baseViewConstraint.active = true

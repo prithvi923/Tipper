@@ -12,11 +12,10 @@
 		F436A4D21D86495000BD3FF1 /* PPSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436A4D11D86495000BD3FF1 /* PPSegmentedControl.swift */; };
 		F436A4D41D8655FF00BD3FF1 /* PPInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436A4D31D8655FF00BD3FF1 /* PPInputField.swift */; };
 		F436A4D61D86595200BD3FF1 /* PPLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436A4D51D86595200BD3FF1 /* PPLabel.swift */; };
+		F436A4DA1D8690D100BD3FF1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F436A4D91D8690D100BD3FF1 /* Default-568h@2x.png */; };
 		F4E4CD611D85B8D1008C4561 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4CD601D85B8D1008C4561 /* AppDelegate.swift */; };
 		F4E4CD631D85B8D1008C4561 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4CD621D85B8D1008C4561 /* ViewController.swift */; };
-		F4E4CD661D85B8D1008C4561 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4E4CD641D85B8D1008C4561 /* Main.storyboard */; };
 		F4E4CD681D85B8D1008C4561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E4CD671D85B8D1008C4561 /* Assets.xcassets */; };
-		F4E4CD6B1D85B8D1008C4561 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4E4CD691D85B8D1008C4561 /* LaunchScreen.storyboard */; };
 		F4E4CD761D85B8D1008C4561 /* TipperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4CD751D85B8D1008C4561 /* TipperTests.swift */; };
 		F4E4CD811D85B8D1008C4561 /* TipperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4CD801D85B8D1008C4561 /* TipperUITests.swift */; };
 /* End PBXBuildFile section */
@@ -44,12 +43,11 @@
 		F436A4D11D86495000BD3FF1 /* PPSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPSegmentedControl.swift; sourceTree = "<group>"; };
 		F436A4D31D8655FF00BD3FF1 /* PPInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPInputField.swift; sourceTree = "<group>"; };
 		F436A4D51D86595200BD3FF1 /* PPLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPLabel.swift; sourceTree = "<group>"; };
+		F436A4D91D8690D100BD3FF1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F4E4CD5D1D85B8D1008C4561 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E4CD601D85B8D1008C4561 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4E4CD621D85B8D1008C4561 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F4E4CD651D85B8D1008C4561 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4E4CD671D85B8D1008C4561 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F4E4CD6A1D85B8D1008C4561 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4E4CD6C1D85B8D1008C4561 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4E4CD711D85B8D1008C4561 /* TipperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E4CD751D85B8D1008C4561 /* TipperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipperTests.swift; sourceTree = "<group>"; };
@@ -87,6 +85,7 @@
 		F4E4CD541D85B8D1008C4561 = {
 			isa = PBXGroup;
 			children = (
+				F436A4D91D8690D100BD3FF1 /* Default-568h@2x.png */,
 				F4E4CD5F1D85B8D1008C4561 /* Tipper */,
 				F4E4CD741D85B8D1008C4561 /* TipperTests */,
 				F4E4CD7F1D85B8D1008C4561 /* TipperUITests */,
@@ -114,9 +113,7 @@
 				F436A4D11D86495000BD3FF1 /* PPSegmentedControl.swift */,
 				F436A4CF1D8645A700BD3FF1 /* PPInputView.swift */,
 				F436A4CD1D86159000BD3FF1 /* Constants.swift */,
-				F4E4CD641D85B8D1008C4561 /* Main.storyboard */,
 				F4E4CD671D85B8D1008C4561 /* Assets.xcassets */,
-				F4E4CD691D85B8D1008C4561 /* LaunchScreen.storyboard */,
 				F4E4CD6C1D85B8D1008C4561 /* Info.plist */,
 			);
 			path = Tipper;
@@ -244,9 +241,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4E4CD6B1D85B8D1008C4561 /* LaunchScreen.storyboard in Resources */,
 				F4E4CD681D85B8D1008C4561 /* Assets.xcassets in Resources */,
-				F4E4CD661D85B8D1008C4561 /* Main.storyboard in Resources */,
+				F436A4DA1D8690D100BD3FF1 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,25 +307,6 @@
 			targetProxy = F4E4CD7D1D85B8D1008C4561 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F4E4CD641D85B8D1008C4561 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F4E4CD651D85B8D1008C4561 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F4E4CD691D85B8D1008C4561 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F4E4CD6A1D85B8D1008C4561 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F4E4CD831D85B8D1008C4561 /* Debug */ = {
