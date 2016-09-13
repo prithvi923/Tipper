@@ -79,15 +79,6 @@ class ViewController: UIViewController {
     }
     
     func changeTip() {
-        if ppInputView.inputField.text != "" {
-            baseViewConstraint.constant = viewableArea/2
-        } else {
-            baseViewConstraint.constant = viewableArea
-        }
-        
-        UIView.animateWithDuration(0.25) {
-            self.view.layoutIfNeeded()
-        }
         
         let base = Double(ppInputView.inputField.text!) ?? 0
         
@@ -107,9 +98,11 @@ class ViewController: UIViewController {
         
         keyboardHeight = frame.height
         
-        viewableArea = view.frame.height - keyboardHeight
+        let navigationHeight = navigationController?.navigationBar.frame.height
         
-        baseViewConstraint = ppInputView.heightAnchor.constraintEqualToConstant(viewableArea)
+        viewableArea = view.frame.height - keyboardHeight - navigationHeight! - 20
+        
+        baseViewConstraint = ppInputView.heightAnchor.constraintEqualToConstant(viewableArea/2)
         baseViewConstraint.active = true
         tipLabel.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
         totalLabel.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
