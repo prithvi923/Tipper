@@ -15,7 +15,18 @@ class PPSegmentedControl: UISegmentedControl {
         
         backgroundColor = Constants.appGreenColor
         tintColor = UIColor.whiteColor()
-        selectedSegmentIndex = 1
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        var defaultIndex = 0
+        
+        if (defaults.objectForKey(Constants.defaultIndex) == nil) {
+            defaultIndex = 1
+        } else {
+            defaultIndex = defaults.integerForKey(Constants.defaultIndex)
+        }
+        
+        selectedSegmentIndex = defaultIndex
     }
     
     override init(frame: CGRect) {

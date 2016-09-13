@@ -12,4 +12,5 @@ struct Constants {
     static let appGreenColor = UIColor(red: 120.0/255.0, green: 220.0/255.0, blue: 123.0/255.0, alpha: 1.0)
     static let appLightGreenColor = UIColor(red: 120.0/255.0, green: 220.0/255.0, blue: 123.0/255.0, alpha: 0.75)
     static let tipValues: [String] = ["15%", "20%", "25%"]
+    static let defaultIndex: String = "default_index"
 }
