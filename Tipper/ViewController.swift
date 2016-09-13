@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     var ppInputView: PPInputView!
-    var tipLabel: PPLabel!
-    var totalLabel: PPLabel!
+    var tipLabelView: PPLabelView!
+    var totalLabelView: PPLabelView!
     var keyboardHeight: CGFloat!
     var viewableArea: CGFloat!
     var baseViewConstraint: NSLayoutConstraint!
@@ -57,25 +57,25 @@ class ViewController: UIViewController {
     }
     
     func setupTipLabel() {
-        tipLabel = PPLabel()
+        tipLabelView = PPLabelView(name: "Tip")
         
-        view.addSubview(tipLabel)
+        view.addSubview(tipLabelView)
         
-        tipLabel.translatesAutoresizingMaskIntoConstraints = false
-        tipLabel.topAnchor.constraintEqualToAnchor(ppInputView.bottomAnchor, constant: 0).active = true
-        tipLabel.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
-        tipLabel.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
+        tipLabelView.translatesAutoresizingMaskIntoConstraints = false
+        tipLabelView.topAnchor.constraintEqualToAnchor(ppInputView.bottomAnchor, constant: 0).active = true
+        tipLabelView.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
+        tipLabelView.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
     }
     
     func setupTotalLabel() {
-        totalLabel = PPLabel()
+        totalLabelView = PPLabelView(name: "Total")
         
-        view.addSubview(totalLabel)
+        view.addSubview(totalLabelView)
         
-        totalLabel.translatesAutoresizingMaskIntoConstraints = false
-        totalLabel.topAnchor.constraintEqualToAnchor(tipLabel.bottomAnchor, constant: 0).active = true
-        totalLabel.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
-        totalLabel.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
+        totalLabelView.translatesAutoresizingMaskIntoConstraints = false
+        totalLabelView.topAnchor.constraintEqualToAnchor(tipLabelView.bottomAnchor, constant: 0).active = true
+        totalLabelView.widthAnchor.constraintEqualToConstant(view.frame.width).active = true
+        totalLabelView.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: 0).active = true
     }
     
     func changeTip() {
@@ -89,8 +89,8 @@ class ViewController: UIViewController {
         let tip = tipPerc*base
         let total = tip+base
         
-        tipLabel.text = String.localizedStringWithFormat("+ $%.2f", tip)
-        totalLabel.text = String.localizedStringWithFormat("= $%.2f", total)
+        tipLabelView.amountLabel.text = String.localizedStringWithFormat("$%.2f", tip)
+        totalLabelView.amountLabel.text = String.localizedStringWithFormat("$%.2f", total)
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -104,8 +104,8 @@ class ViewController: UIViewController {
         
         baseViewConstraint = ppInputView.heightAnchor.constraintEqualToConstant(viewableArea/2)
         baseViewConstraint.active = true
-        tipLabel.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
-        totalLabel.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
+        tipLabelView.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
+        totalLabelView.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
     }
 
     override func didReceiveMemoryWarning() {

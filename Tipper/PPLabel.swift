@@ -10,13 +10,14 @@ import UIKit
 
 class PPLabel: UILabel {
     
-    init() {
+    init(title: String, fontSize: CGFloat) {
         super.init(frame: CGRect())
         
-        backgroundColor = Constants.appLightGreenColor
+        text = title
+        backgroundColor = UIColor.clearColor()
         textAlignment = NSTextAlignment.Right
         textColor = UIColor.whiteColor()
-        font = UIFont(name: "Futura", size: 30.0)
+        font = UIFont(name: "Futura", size: fontSize)
     }
     
     required init?(coder aDecoder: NSCoder) {
