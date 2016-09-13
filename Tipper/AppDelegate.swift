@@ -13,12 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var navController: UINavigationController?
+    var mySettingsViewController: SettingsViewController!
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         let myViewController = ViewController()
+        mySettingsViewController = SettingsViewController()
         
         myViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: #selector(pushSettings))
         
@@ -34,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func pushSettings() {
-        navController?.pushViewController(SettingsViewController(), animated: true)
+        navController?.pushViewController(mySettingsViewController, animated: true)
     }
 
     func applicationWillResignActive(application: UIApplication) {
