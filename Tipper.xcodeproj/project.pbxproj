@@ -16,7 +16,7 @@
 		F436A4DC1D8705F300BD3FF1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436A4DB1D8705F300BD3FF1 /* SettingsViewController.swift */; };
 		F436A4DE1D87971200BD3FF1 /* PPLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436A4DD1D87971200BD3FF1 /* PPLabelView.swift */; };
 		F4E4CD611D85B8D1008C4561 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4CD601D85B8D1008C4561 /* AppDelegate.swift */; };
-		F4E4CD631D85B8D1008C4561 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4CD621D85B8D1008C4561 /* ViewController.swift */; };
+		F4E4CD631D85B8D1008C4561 /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4CD621D85B8D1008C4561 /* TipViewController.swift */; };
 		F4E4CD681D85B8D1008C4561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E4CD671D85B8D1008C4561 /* Assets.xcassets */; };
 		F4E4CD761D85B8D1008C4561 /* TipperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4CD751D85B8D1008C4561 /* TipperTests.swift */; };
 		F4E4CD811D85B8D1008C4561 /* TipperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4CD801D85B8D1008C4561 /* TipperUITests.swift */; };
@@ -50,7 +50,7 @@
 		F436A4DD1D87971200BD3FF1 /* PPLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPLabelView.swift; sourceTree = "<group>"; };
 		F4E4CD5D1D85B8D1008C4561 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E4CD601D85B8D1008C4561 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4E4CD621D85B8D1008C4561 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4E4CD621D85B8D1008C4561 /* TipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
 		F4E4CD671D85B8D1008C4561 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4E4CD6C1D85B8D1008C4561 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4E4CD711D85B8D1008C4561 /* TipperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,8 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				F4E4CD601D85B8D1008C4561 /* AppDelegate.swift */,
+				F4E4CD621D85B8D1008C4561 /* TipViewController.swift */,
 				F436A4DB1D8705F300BD3FF1 /* SettingsViewController.swift */,
-				F4E4CD621D85B8D1008C4561 /* ViewController.swift */,
 				F436A4DD1D87971200BD3FF1 /* PPLabelView.swift */,
 				F436A4D51D86595200BD3FF1 /* PPLabel.swift */,
 				F436A4CF1D8645A700BD3FF1 /* PPInputView.swift */,
@@ -273,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4E4CD631D85B8D1008C4561 /* ViewController.swift in Sources */,
+				F4E4CD631D85B8D1008C4561 /* TipViewController.swift in Sources */,
 				F436A4D21D86495000BD3FF1 /* PPSegmentedControl.swift in Sources */,
 				F4E4CD611D85B8D1008C4561 /* AppDelegate.swift in Sources */,
 				F436A4DE1D87971200BD3FF1 /* PPLabelView.swift in Sources */,

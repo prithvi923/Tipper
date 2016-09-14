@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.synchronize()
         }
         
-        let myViewController = ViewController()
+        let myViewController = TipViewController()
         mySettingsViewController = SettingsViewController()
         
         myViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: #selector(pushSettings))

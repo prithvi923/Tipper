@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TipViewController: UIViewController {
 
     var ppInputView: PPInputView!
     var tipLabelView: PPLabelView!
