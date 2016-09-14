@@ -19,6 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if (defaults.objectForKey(Constants.defaultIndex) == nil) {
+            defaults.setInteger(1, forKey: Constants.defaultIndex)
+            defaults.synchronize()
+        }
+        
         let myViewController = ViewController()
         mySettingsViewController = SettingsViewController()
         

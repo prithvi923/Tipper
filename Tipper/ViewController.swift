@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        // TODO: Set default index in App Delegate for new launches
         ppInputView.tipControl.selectedSegmentIndex = NSUserDefaults.standardUserDefaults().integerForKey(Constants.defaultIndex)
         changeTip()
     }
