@@ -12,13 +12,13 @@ class PPInputView: UIView {
     var tipControl: PPSegmentedControl!
     var inputField: PPInputField!
     
-    init(viewWidth: CGFloat) {
+    init(viewWidth: CGFloat, currency: String) {
         super.init(frame: CGRect())
         
         backgroundColor = Constants.appGreenColor
         
         tipControl = PPSegmentedControl(items: Constants.tipValues)
-        inputField = PPInputField()
+        inputField = PPInputField(currency: currency)
         
         addSubview(tipControl)
         addTipControlConstraints(viewWidth)

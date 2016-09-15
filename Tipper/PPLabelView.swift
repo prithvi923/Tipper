@@ -13,12 +13,13 @@ class PPLabelView: UIView {
     var viewLabel: PPLabel!
     var amountLabel: PPLabel!
 
-    init(name: String) {
+    init(name: String, currency: String) {
         super.init(frame: CGRect())
         
         backgroundColor = Constants.appLightGreenColor
         
-        amountLabel = PPLabel(title: "$0.00", fontSize: 30.0)
+        let defaultText = String.localizedStringWithFormat("%@0.00", currency)
+        amountLabel = PPLabel(title: defaultText, fontSize: 30.0)
         addSubview(amountLabel)
         positionAmountLabel()
         

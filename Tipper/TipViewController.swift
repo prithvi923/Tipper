@@ -16,10 +16,12 @@ class TipViewController: UIViewController {
     var keyboardHeight: CGFloat!
     var viewableArea: CGFloat!
     var baseViewConstraint: NSLayoutConstraint!
+    var currencySymbol: String!
     
     init() {
         super.init(nibName: nil, bundle: nil)
         title = "Tipper"
+        currencySymbol = NSLocale.currentLocale().objectForKey(NSLocaleCurrencySymbol) as! String!
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,7 +63,7 @@ class TipViewController: UIViewController {
     }
     
     func setupBaseView() {
-        ppInputView = PPInputView(viewWidth: view.frame.width)
+        ppInputView = PPInputView(viewWidth: view.frame.width, currency: currencySymbol)
         
         view.addSubview(ppInputView)
         
@@ -76,7 +78,7 @@ class TipViewController: UIViewController {
     }
     
     func setupTipLabel() {
-        tipLabelView = PPLabelView(name: "Tip")
+        tipLabelView = PPLabelView(name: "Tip", currency: currencySymbol)
         
         view.addSubview(tipLabelView)
         
@@ -87,7 +89,7 @@ class TipViewController: UIViewController {
     }
     
     func setupTotalLabel() {
-        totalLabelView = PPLabelView(name: "Total")
+        totalLabelView = PPLabelView(name: "Total", currency: currencySymbol)
         
         view.addSubview(totalLabelView)
         
@@ -107,9 +109,10 @@ class TipViewController: UIViewController {
         
         let tip = tipPerc*base
         let total = tip+base
+        let currencySymbol = NSLocale.currentLocale().objectForKey(NSLocaleCurrencySymbol) as! String!
         
-        tipLabelView.amountLabel.text = String.localizedStringWithFormat("$%.2f", tip)
-        totalLabelView.amountLabel.text = String.localizedStringWithFormat("$%.2f", total)
+        tipLabelView.amountLabel.text = String.localizedStringWithFormat("%@%.2f", currencySymbol, tip)
+        totalLabelView.amountLabel.text = String.localizedStringWithFormat("%@%.2f", currencySymbol, total)
     }
     
     func keyboardWillShow(notification: NSNotification) {

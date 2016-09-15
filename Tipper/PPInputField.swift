@@ -10,7 +10,7 @@ import UIKit
 
 class PPInputField: UITextField {
 
-    init() {
+    init(currency: String) {
         super.init(frame: CGRect())
         
         backgroundColor = Constants.appGreenColor
@@ -18,7 +18,7 @@ class PPInputField: UITextField {
         font = UIFont(name: "Futura", size: 30.0)
         textAlignment = NSTextAlignment.Right
         keyboardType = UIKeyboardType.DecimalPad
-        placeholder = "$"
+        placeholder = currency
     }
     
     required init?(coder aDecoder: NSCoder) {
