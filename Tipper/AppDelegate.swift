@@ -19,13 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        if (defaults.objectForKey(Constants.defaultIndex) == nil) {
-            defaults.setInteger(1, forKey: Constants.defaultIndex)
-            defaults.synchronize()
-        }
+        setDefaults()
         
         tipViewController = TipViewController()
         mySettingsViewController = SettingsViewController()
@@ -43,6 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func setDefaults() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if (defaults.objectForKey(Constants.defaultIndex) == nil) {
+            defaults.setInteger(1, forKey: Constants.defaultIndex)
+            defaults.synchronize()
+        }
+    }
+    
     func pushSettings() {
         navController?.pushViewController(mySettingsViewController, animated: true)
     }
@@ -55,16 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        let billAmount = Double(tipViewController.ppInputView.inputField.text!) ?? 0
-        let date = NSDate.timeIntervalSinceReferenceDate()
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        if billAmount != 0 {
-            defaults.setDouble(billAmount, forKey: Constants.lastActiveBill)
-            defaults.setDouble(date, forKey: Constants.lastActiveDate)
-            defaults.synchronize()
-        }
+        tipViewController.saveBillAmount()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

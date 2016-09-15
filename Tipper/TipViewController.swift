@@ -29,19 +29,7 @@ class TipViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        ppInputView.tipControl.selectedSegmentIndex = defaults.integerForKey(Constants.defaultIndex)
-        let currentDate = NSDate.timeIntervalSinceReferenceDate()
-        if (defaults.objectForKey(Constants.lastActiveDate) != nil) {
-            let lastActiveDate = defaults.doubleForKey(Constants.lastActiveDate)
-            let lastActiveBill = defaults.doubleForKey(Constants.lastActiveBill)
-            
-            let tenMinutes = 600.00
-            if currentDate <= lastActiveDate.advancedBy(tenMinutes) {
-                ppInputView.inputField.text = String.localizedStringWithFormat("%.2f", lastActiveBill)
-            }
-        }
+        useDefaults()
         changeTip()
     }
     
@@ -56,8 +44,20 @@ class TipViewController: UIViewController {
         setupTotalLabel()
     }
     
-    func showSettings() {
-        print("here")
+    func useDefaults() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        ppInputView.tipControl.selectedSegmentIndex = defaults.integerForKey(Constants.defaultIndex)
+        let currentDate = NSDate.timeIntervalSinceReferenceDate()
+        if (defaults.objectForKey(Constants.lastActiveDate) != nil) {
+            let lastActiveDate = defaults.doubleForKey(Constants.lastActiveDate)
+            let lastActiveBill = defaults.doubleForKey(Constants.lastActiveBill)
+            
+            let tenMinutes = 600.00
+            if currentDate <= lastActiveDate.advancedBy(tenMinutes) {
+                ppInputView.inputField.text = String.localizedStringWithFormat("%.2f", lastActiveBill)
+            }
+        }
     }
     
     func setupBaseView() {
@@ -125,6 +125,19 @@ class TipViewController: UIViewController {
         baseViewConstraint.active = true
         tipLabelView.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
         totalLabelView.heightAnchor.constraintEqualToConstant(viewableArea/4).active = true
+    }
+    
+    func saveBillAmount() {
+        let billAmount = Double(ppInputView.inputField.text!) ?? 0
+        let date = NSDate.timeIntervalSinceReferenceDate()
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if billAmount != 0 {
+            defaults.setDouble(billAmount, forKey: Constants.lastActiveBill)
+            defaults.setDouble(date, forKey: Constants.lastActiveDate)
+            defaults.synchronize()
+        }
     }
 
     override func didReceiveMemoryWarning() {
