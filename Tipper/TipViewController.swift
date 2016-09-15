@@ -29,7 +29,19 @@ class TipViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        ppInputView.tipControl.selectedSegmentIndex = NSUserDefaults.standardUserDefaults().integerForKey(Constants.defaultIndex)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        ppInputView.tipControl.selectedSegmentIndex = defaults.integerForKey(Constants.defaultIndex)
+        let currentDate = NSDate.timeIntervalSinceReferenceDate()
+        if (defaults.objectForKey(Constants.lastActiveDate) != nil) {
+            let lastActiveDate = defaults.doubleForKey(Constants.lastActiveDate)
+            let lastActiveBill = defaults.doubleForKey(Constants.lastActiveBill)
+            
+            let tenMinutes = 600.00
+            if currentDate <= lastActiveDate.advancedBy(tenMinutes) {
+                ppInputView.inputField.text = String.localizedStringWithFormat("%.2f", lastActiveBill)
+            }
+        }
         changeTip()
     }
     

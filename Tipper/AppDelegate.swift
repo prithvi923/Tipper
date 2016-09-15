@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var navController: UINavigationController?
+    var tipViewController: TipViewController!
     var mySettingsViewController: SettingsViewController!
 
 
@@ -26,12 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.synchronize()
         }
         
-        let myViewController = TipViewController()
+        tipViewController = TipViewController()
         mySettingsViewController = SettingsViewController()
         
-        myViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: #selector(pushSettings))
+        tipViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: #selector(pushSettings))
         
-        navController = UINavigationController(rootViewController: myViewController)
+        navController = UINavigationController(rootViewController: tipViewController)
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
@@ -54,6 +55,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        let billAmount = Double(tipViewController.ppInputView.inputField.text!) ?? 0
+        let date = NSDate.timeIntervalSinceReferenceDate()
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if billAmount != 0 {
+            defaults.setDouble(billAmount, forKey: Constants.lastActiveBill)
+            defaults.setDouble(date, forKey: Constants.lastActiveDate)
+            defaults.synchronize()
+        }
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
